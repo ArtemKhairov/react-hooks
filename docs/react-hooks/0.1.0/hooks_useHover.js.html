@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="Hover.html">Hover</a></li></ul></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useHover">useHover</a></li><li><a href="global.html#useInput">useInput</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="App.html">App</a></li><li><a href="Hover.html">Hover</a></li><li><a href="List.html">List</a></li></ul></div><div class="category"><h2>Hooks</h2><h3>Global</h3><ul><li><a href="global.html#useHover">useHover</a></li><li><a href="global.html#useInput">useInput</a></li></ul></div>
                 
             </nav>
         </div>
@@ -108,16 +108,16 @@ function useHover(ref) {
       return;
     }
     const node = ref.current;
-    node.addEventListener('mouseenter',on())
-    node.addEventListener('mousemove',on())
-    node.addEventListener('mouseleave',off())
+    node.addEventListener('mouseenter',on)
+    node.addEventListener('mousemove',on)
+    node.addEventListener('mouseleave',off)
 
     return function(){
-      node.removeEventListener('mouseenter',on())
-      node.removeEventListener('mousemove',on())
-      node.removeEventListener('mouseleave',off())
+      node.removeEventListener('mouseenter',on)
+      node.removeEventListener('mousemove',on)
+      node.removeEventListener('mouseleave',off)
     }
-  }, []);
+  });
   return hovering;
 }
 

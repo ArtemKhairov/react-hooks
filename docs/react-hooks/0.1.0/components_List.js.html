@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> App</title>
+  <title> components/List.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -77,186 +79,49 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Components</p>
-                    <h1>App</h1>
+                    <p>Source</p>
+                    <h1>components/List.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            &ltApp  /&gt
-        </h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="App">
-        <a class="href-link" href="#App">#</a>
-        
-        <span class="code-name">
-            
-                &ltApp  /&gt
-            
-        </span>
-    </h4>
-    
-
-    
-    <p class="summary"><p>Вернет Начальный компонент</p></p>
-    
-    
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>ArtemKhairov</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="App.js.html" class="button">View Source</a>
-            <span>
-                <a href="App.js.html">App.js</a>, <a href="App.js.html#line11">line 11</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>React Application Hooks</p></div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-        
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useEffect, useRef, useState } from "react";
+
+/**
+ * @component List
+ * @author ArtemKhairov
+ * @returns List with some data
+ */
+const List = () => {
+  const [todos, setTodos] = useState([]);
+  const [page, setPage] = useState(1);
+  /**
+   * @param {number} - data limit
+   */
+  const limit = 20;
+  const parent = useRef();
+
+  const fetchTodos = (page, limit) => {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then((res) => res.json())
+      .then((json) => setTodos(json));
+  };
+
+  useEffect(() => {
+    fetchTodos(page, limit);
+  }, []);
+
+  return &lt;div>&lt;/div>;
+};
+
+export default List;
+</code></pre>
+        </article>
+    </section>
 
 
 

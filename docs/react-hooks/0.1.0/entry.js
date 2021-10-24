@@ -27,3 +27,6 @@ reactComponents['App'] = Component0;
 
 import Component1 from '../../../src/components/Hover.js';
 reactComponents['Hover'] = Component1;
+
+import Component2 from '../../../src/components/List.js';
+reactComponents['List'] = Component2;
