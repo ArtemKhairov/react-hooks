@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "better-docs": "^2.3.2",
     "jsdoc": "^3.6.7",
+    "parcel": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -18,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "docs":"jsdoc -c jsdoc.conf.json --package package.json"
+    "cleardocs":"rm -rf docs",
+    "docs": "jsdoc -c jsdoc.conf.json --package package.json --readme README.md"
   },
   "eslintConfig": {
     "extends": [

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> App.js</title>
+  <title> hooks/useHover.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>App.js</h1>
+                    <h1>hooks/useHover.js</h1>
                 </header>
                 
 
@@ -89,33 +89,39 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import useInput from "./hooks/useInput";
+            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react";
 
 /**
- * @component App
- * @author ArtemKhairov
- * @summary Вернет Начальный компонент
- * @returns React Application Hooks
+ * @category Hooks
+ * @description Хук для получени рефа
+ * @param {any} ref - Ref на элемент
+ * @returns Состояние элемента hover or notHover
  */
 
-function App() {
-  const username = useInput("Artem");
+function useHover(ref) {
+  const [hovering, setHovering] = useState(false);
+  const on = () => setHovering(true);
+  const off = () => setHovering(false);
 
-  return (
-    &lt;div>
-      &lt;input
-        type="text"
-        {...username}
-        // value={value}
-        // onChange={(ev) => setValue(ev.target.value)}
-      />
-      &lt;button onClick={() => console.log(username)}>Console&lt;/button>
-    &lt;/div>
-  );
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+    const node = ref.current;
+    node.addEventListener('mouseenter',on())
+    node.addEventListener('mousemove',on())
+    node.addEventListener('mouseleave',off())
+
+    return function(){
+      node.removeEventListener('mouseenter',on())
+      node.removeEventListener('mousemove',on())
+      node.removeEventListener('mouseleave',off())
+    }
+  }, []);
+  return hovering;
 }
 
-export default App;
+export default useHover;
 </code></pre>
         </article>
     </section>

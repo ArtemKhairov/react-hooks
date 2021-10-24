@@ -2,7 +2,9 @@ import React from "react";
 import useInput from "./hooks/useInput";
 
 /**
+ * @component App
  * @author ArtemKhairov
+ * @summary Вернет Начальный компонент
  * @returns React Application Hooks
  */
 

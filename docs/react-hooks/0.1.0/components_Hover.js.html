@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> App.js</title>
+  <title> components/Hover.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -80,7 +80,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>App.js</h1>
+                    <h1>components/Hover.js</h1>
                 </header>
                 
 
@@ -89,33 +89,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import useInput from "./hooks/useInput";
+            <pre class="prettyprint source linenums"><code>import React, { useRef } from "react";
+import useHover from "../hooks/useHover";
 
 /**
- * @component App
+ * @component Hover
  * @author ArtemKhairov
- * @summary Вернет Начальный компонент
- * @returns React Application Hooks
+ * @returns Component with square
  */
 
-function App() {
-  const username = useInput("Artem");
+const Hover = () => {
+  const ref = useRef();
+  const isHovering = useHover();
 
   return (
-    &lt;div>
-      &lt;input
-        type="text"
-        {...username}
-        // value={value}
-        // onChange={(ev) => setValue(ev.target.value)}
-      />
-      &lt;button onClick={() => console.log(username)}>Console&lt;/button>
-    &lt;/div>
+    &lt;div
+      ref={ref}
+      style={{ width: "400px", height: "400px", background: "blue" }}
+    >&lt;/div>
   );
-}
+};
 
-export default App;
+export default Hover;
 </code></pre>
         </article>
     </section>
